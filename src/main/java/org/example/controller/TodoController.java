@@ -20,6 +20,15 @@ public class TodoController {
 
     private final TodoService service;
 
+    @GetMapping
+    public ResponseEntity<List<TodoResponse>> readAll() {
+        System.out.println("READ ALL");
+        List<TodoEntity> list = this.service.searchAll();
+        List<TodoResponse> response = list.stream().map(TodoResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping
     public ResponseEntity<TodoResponse> create(@RequestBody TodoRequest request) {
         System.out.println("CREATE");
@@ -44,15 +53,6 @@ public class TodoController {
         System.out.println("READ ONE");
         TodoEntity result = this.service.searchById(id);
         return ResponseEntity.ok(new TodoResponse(result));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<TodoResponse>> readAll() {
-        System.out.println("READ ALL");
-        List<TodoEntity> list = this.service.searchAll();
-        List<TodoResponse> response = list.stream().map(TodoResponse::new)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("{id}")

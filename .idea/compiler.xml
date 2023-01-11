@@ -11,6 +11,6 @@
         <module name="todo-server.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="18" />
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>
