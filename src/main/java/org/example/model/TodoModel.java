@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class TodoEntity {
+public class TodoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
